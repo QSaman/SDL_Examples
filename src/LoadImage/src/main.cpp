@@ -28,8 +28,16 @@ SDL_Rect scaleSurfaceToWindow(SDL_Renderer* renderer, SDL_Surface* surface)
 	return res; 
 }
 
-int main()
+int main(int argc, char* argv[])
 {
+	const char* img_path = "anakin013.jpg";
+	if (argc > 2)
+	{
+		std::cerr << "You should provide at most one image path" << std::endl;
+		return 0;
+	}
+	else if (argc == 2)
+		img_path = argv[1];
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
 		std::cerr << SDL_GetError() << std::endl;
@@ -49,7 +57,7 @@ int main()
 		std::cerr << SDL_GetError();
 		return 3;
 	}
-	auto surface = IMG_Load("anakin013.jpg");
+	auto surface = IMG_Load(img_path);
 	if (surface == nullptr)
 	{
 		std::cerr << SDL_GetError() << std::endl;
