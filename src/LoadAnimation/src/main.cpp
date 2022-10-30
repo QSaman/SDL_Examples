@@ -10,7 +10,7 @@
 
 constexpr int WIDTH = 800, HEIGHT = 600;
 
-// Modify below two line to see the number of rendered times
+// Modify below two lines to see the number of rendered times
 //int rendered_count = 0;
 #define print_rendered_count() //std::cout << "rendered count: " << ++rendered_count << std::endl
 
@@ -85,7 +85,7 @@ int main(int argc, char* argv[])
 	int timeout = 0;
 	while (!quit)
 	{
-		// We don't want to render the page when it's unnecessary (e.g. instead of animated gif, we have an image):
+		// We don't want to render the page when it's unnecessary (e.g. instead of an animated gif, we have an image):
 		if (timeout == 0)
 			SDL_WaitEvent(&event);
 		else
@@ -96,12 +96,12 @@ int main(int argc, char* argv[])
 				quit = true;
 				break;
 		}
+		print_rendered_count();
 		SDL_RenderClear(renderer);
 		const auto rect = scaleSurfaceToWindow(renderer, animation->frames[current_frame]);
 		SDL_RenderCopy(renderer, textures[current_frame], nullptr, &rect);
 		SDL_RenderPresent(renderer);
 		auto now = SDL_GetTicks();
-		print_rendered_count();
 		if (time_for_next_frame <= now)
 		{
 			time_for_next_frame = now + animation->delays[current_frame];
