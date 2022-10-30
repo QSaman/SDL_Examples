@@ -1,9 +1,6 @@
 // https://github.com/libsdl-org/SDL_image/blob/release-2.6.0/showanim.c
-#include "SDL_image.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL_render.h>
-#include <SDL_timer.h>
+#include <SDL_image.h>
+#include <SDL.h>
 #include <algorithm>
 #include <iostream>
 #include <vector>
